@@ -1,0 +1,25 @@
+{
+    "name": "MME-Bucket",
+    "version": "0.0.0",
+    "description": "repository tracker for bitbucket",
+    "main": "Gruntfile.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://bitbucket.org/wiese4/mme-bucket"
+    },
+    "author": "Michael Stahl <michael.stahl@wiese4.de>",
+    "license": "CC0",
+    "devDependencies": {
+        "grunt": "^0.4.5",
+        "grunt-auto-install": "^0.2.4",
+        "grunt-contrib-clean": "^0.6.0",
+        "grunt-contrib-copy": "^0.8.0",
+        "grunt-curl": "^2.2.0",
+        "grunt-contrib-concat": "^1.0.1",
+        "grunt-contrib-uglify": "^1.0.1",
+        "grunt-mkdir": "^0.1.2"
+    }
+}

@@ -1,0 +1,325 @@
+{
+    "person": {
+        "firstName": "Michael",
+        "lastName": "Stahl",
+        "birthData": {
+            "place": "Kemnath",
+            "date": "1986-09-28T02:00:00.000Z"
+        },
+        "address": {
+            "city": "Regensburg",
+            "street": "Weißenburgstraße",
+            "number": 1,
+            "plz": 93055
+        }
+    },
+    "periods": {
+        "school": [
+            {
+                "from": "1993-09-01T00:00:00.000Z",
+                "to": "1997-08-31T00:00:00.000Z",
+                "type": "Grundschule",
+                "place": "Kirchenpingarten"
+      },
+            {
+                "from": "1997-09-01T00:00:00.000Z",
+                "to": "1999-08-31T00:00:00.000Z",
+                "type": "Volksschule",
+                "place": "Weidenberg"
+      },
+            {
+                "from": "1999-09-01T00:00:00.000Z",
+                "to": "2003-08-31T00:00:00.000Z",
+                "type": "Realschule",
+                "name": "Alexander-von-Humboldt",
+                "place": "Bayreuth"
+      },
+            {
+                "from": "2003-09-01T00:00:00.000Z",
+                "to": "2006-08-31T00:00:00.000Z",
+                "type": "Staatliche Berufsschule",
+                "place": "Bayreuth"
+      },
+            {
+                "from": "2009-09-01T00:00:00.000Z",
+                "to": "2011-08-31T00:00:00.000Z",
+                "type": "Staatliche Berufsoberschule",
+                "place": "Bayreuth"
+      }
+    ],
+        "profession": [
+            {
+                "from": "2003-09-01T00:00:00.000Z",
+                "to": "2006-01-31T00:00:00.000Z",
+                "type": "Vollzeit",
+                "profession": "Industriekaufmann",
+                "position": "Ausbildung",
+                "branch": "Energiewirtschaft",
+                "company": "E.ON Bayern AG",
+                "place": "Bayreuth"
+      },
+            {
+                "from": "2006-02-01T00:00:00.000Z",
+                "to": "2009-01-31T00:00:00.000Z",
+                "type": "Vollzeit",
+                "position": "Sachbearbeiter",
+                "profession": "Industriekaufmann",
+                "branch": "Energiewirtschaft",
+                "department": "Lager-/Logistikmanagement",
+                "company": "E.ON Bayern AG",
+                "place": "Bayreuth"
+      },
+            {
+                "from": "2009-04-01T00:00:00.000Z",
+                "to": "2010-06-30T00:00:00.000Z",
+                "profession": "Mediengestaltung, Webdesign",
+                "type": "Vollzeit",
+                "position": "Selbstständigkeit",
+                "branch": "Medien und Internet"
+      },
+            {
+                "from": "2013-04-01T00:00:00.000Z",
+                "to": "2015-09-30T00:00:00.000Z",
+                "type": "Teilzeit",
+                "position": "Studentische Hilfskraft",
+                "profession": "Tutor für den Kurs Multimedia Engineering",
+                "branch": "Lehre und Forschung",
+                "department": "Lehrstuhl für Medieninformatik",
+                "company": "Universität Regensburg",
+                "place": "Regensburg"
+      },
+            {
+                "from": "2013-10-01T00:00:00.000Z",
+                "to": "2014-03-31T00:00:00.000Z",
+                "type": "Teilzeit",
+                "position": "Studentische Hilfskraft",
+                "profession": "Tutor für den Kurs Einführung in die objektorientierte Programmierung mit Java",
+                "branch": "Lehre und Forschung",
+                "department": "Lehrstuhl für Wirtschaftsinformatik",
+                "company": "Universität Regensburg",
+                "place": "Regensburg"
+      },
+            {
+                "from": "2014-05-01T00:00:00.000Z",
+                "to": "2014-08-31T00:00:00.000Z",
+                "type": "Teilzeit",
+                "position": "Studentische Hilfskraft",
+                "profession": "Tutor für den Kurs Informationssysteme",
+                "branch": "Lehre und Forschung",
+                "department": "Lehrstuhl für Informationswissenschaft",
+                "company": "Universität Regensburg",
+                "place": "Regensburg"
+      },
+            {
+                "from": "2014-10-01T00:00:00.000Z",
+                "to": "2014-12-31T00:00:00.000Z",
+                "type": "Teilzeit",
+                "position": "Wissenschaftliche Hilfskraft",
+                "profession": "Usability- und UX-Tester (Forschungsprojekt)",
+                "branch": "Lehre und Forschung",
+                "department": "Lehrstuhl für Medieninformatik",
+                "company": "Universität Regensburg",
+                "place": "Regensburg"
+      },
+            {
+                "from": "2014-10-01T00:00:00.000Z",
+                "type": "Teilzeit",
+                "position": "Wissenschaftliche Hilfskraft",
+                "profession": "Tutor für den Kurs Multimedia Engineering",
+                "branch": "Lehre und Forschung",
+                "department": "Lehrstuhl für Medieninformatik",
+                "company": "Universität Regensburg",
+                "place": "Regensburg"
+      },
+            {
+                "from": "2015-09-01T00:00:00.000Z",
+                "type": "Teilzeit",
+                "position": "Selbstständigkeit",
+                "profession": "Web- und Anwendungsentwicklung, Usabilty, UX",
+                "branch": "Medien und Internet",
+                "place": "Regensburg"
+      }
+    ],
+        "studies": [
+            {
+                "from": "2011-10-01T00:00:00.000Z",
+                "to": "2014-09-30T00:00:00.000Z",
+                "majorSubjects": [
+          "Medieninformatik",
+          "Informationswissenschaft"
+        ],
+                "degree": "Bachelor of Arts",
+                "university": "Universität Regensburg",
+                "place": "Regensburg",
+                "tags": [
+          "Webentwicklung",
+          "Usability",
+          "UX",
+          "Multimedia Engineering",
+          "Softwareentwicklung",
+          "JavaScript",
+          "Java",
+          "HTML",
+          "CSS",
+          "MySQL",
+          "PHP",
+          "Android",
+          "Medieninformatik",
+          "Informationswissenschaft",
+          "Datenbanken"
+        ]
+      },
+            {
+                "from": "2014-10-01T00:00:00.000Z",
+                "majorSubjects": [
+          "Medieninformatik"
+        ],
+                "degree": "Master of Science",
+                "university": "Universität Regensburg",
+                "place": "Regensburg",
+                "tags": [
+          "Webentwicklung",
+          "Digital Humanities",
+          "Interaction Techniques and Technologies",
+          "Usability",
+          "UX",
+          "Softwareentwicklung",
+          "JavaScript",
+          "HTML",
+          "CSS",
+          "MySQL",
+          "MongoDB",
+          "PHP",
+          "Medieninformatik"
+        ]
+      }
+    ],
+        "honoraries": [
+            {
+                "from": "2004-01-01T00:00:00.000Z",
+                "to": "2006-01-31T00:00:00.000Z",
+                "place": "Bayreuth",
+                "position": "Gewähltes Mitglied",
+                "type": "Jugend- und Auszubildendenvertretung",
+                "organisation": "E.ON Bayern AG"
+      },
+            {
+                "from": "2010-09-01T00:00:00.000Z",
+                "to": "2011-08-31T00:00:00.000Z",
+                "place": "Bayreuth",
+                "position": "Freiwilliger Helfer",
+                "type": "SMV",
+                "organisation": "Berufliche Oberschule"
+      },
+            {
+                "from": "2012-10-01T00:00:00.000Z",
+                "place": "Regensburg",
+                "position": "Aktives Mitglied",
+                "type": "Fachschaft SLK",
+                "organisation": "Universität Regensburg"
+      },
+            {
+                "from": "2013-10-01T00:00:00.000Z",
+                "to": "2014-09-30T00:00:00.000Z",
+                "place": "Regensburg",
+                "position": "Gewählter Studierendenvertreter",
+                "type": "Fakultät SLK",
+                "organisation": "Universität Regensburg"
+      },
+            {
+                "from": "2013-10-01T00:00:00.000Z",
+                "place": "Regensburg",
+                "position": "Schauspieler, Helfer",
+                "type": "Germanistentheater",
+                "organisation": "Universität Regensburg"
+      },
+            {
+                "from": "2014-09-01T00:00:00.000Z",
+                "place": "Regensburg",
+                "position": "Gewählter Vorstand",
+                "type": "Gemeinnütziger Verein",
+                "organisation": "con_Temporary e.V."
+      },
+            {
+                "from": "2013-09-06T00:00:00.000Z",
+                "to": "2013-09-11T00:00:00.000Z",
+                "place": "Bremen",
+                "position": "Student Volunteer",
+                "type": "Konferenz Mensch und Computer (Muc)",
+                "organisation": "Universität Bremen"
+      },
+            {
+                "from": "2014-08-31T00:00:00.000Z",
+                "to": "2014-09-03T00:00:00.000Z",
+                "place": "München",
+                "position": "Student Volunteer",
+                "type": "Konferenz Mensch und Computer (Muc)",
+                "organisation": "LMU München"
+      },
+            {
+                "from": "2015-09-05T00:00:00.000Z",
+                "to": "2015-09-09T00:00:00.000Z",
+                "place": "Stuttgart",
+                "position": "Student Volunteer",
+                "type": "Konferenz Mensch und Computer (Muc)",
+                "organisation": "Universität Stuttgart"
+      },
+            {
+                "from": "2015-04-01T00:00:00.000Z",
+                "place": "Regensburg",
+                "position": "Studentisches Mitglied",
+                "type": "Berufungskommission W2-Professur Medieninformatik",
+                "organisation": "Universität Regensburg"
+      }
+    ],
+        "scholarships": [
+            {
+                "from": "2011-10-01T00:00:00.000Z",
+                "to": "2014-09-31T00:00:00.000Z",
+                "organisation": "Stiftung Begabtenförderung berufliche Bildung (SBB)",
+                "type": "Aufstiegsstipendium"
+      },
+            {
+                "from": "2015-04-01T00:00:00.000Z",
+                "organisation": "Universität Regensburg",
+                "type": "Deutschlandstipendium"
+      }
+    ]
+    },
+    "moments": {
+        "awards": [
+            {
+                "date": "2006-08-31T00:00:00.000Z",
+                "type": "Preis der Schule für ausgezeichnete Leistung",
+                "organisation": "Berufsschule II, Bayreuth"
+      },
+            {
+                "date": "2011-08-31T00:00:00.000Z",
+                "type": "Teilnahme an der Prüfung nach dem Bayerischen Eliteförderungsgesetz",
+                "organisation": "Berufliche Oberschule Bayreuth"
+      },
+            {
+                "date": "2012-08-31T00:00:00.000Z",
+                "type": "1. Preis beim Programmierwettbewerb im Kurs Algorithmen, Datenstrukturen und Programmierung",
+                "organisation": "Lehrstuhl Informationswissenschaft, Universität Regensburg"
+      }
+    ],
+        "degrees": [
+            {
+                "date": "2003-08-31T00:00:00.000Z",
+                "type": "Mittlere Reife",
+                "gpa": "1.5"
+      },
+            {
+                "date": "2011-08-31T00:00:00.000Z",
+                "type": "Allgemeine Hochschulreife",
+                "gpa": "1.2"
+      },
+            {
+                "date": "2014-09-30T00:00:00.000Z",
+                "type": "Bachelor of Arts (Medieninformatik)",
+                "gpa": "1.2"
+      }
+    ]
+    }
+}
