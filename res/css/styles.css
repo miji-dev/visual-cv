@@ -1,0 +1,65 @@
+.container {
+    margin: auto;
+    margin-top: 20em;
+    width: 1200px;
+}
+
+.cv {
+    height: 300px;
+}
+
+.chart {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+}
+
+.bar {
+    fill: #33b5e5;
+    border: 1px solid #333;
+}
+
+.bar-school {
+    fill: rgba(20, 200, 43, 0.5);
+}
+
+.bar-profession {
+    fill: rgba(40, 20, 50, 0.5);
+}
+
+.bar-honoraries {
+    fill: rgba(100, 50, 200, 0.5);
+}
+
+.bar-studies {
+    fill: rgba(89, 98, 2, 0.5);
+}
+
+.bar-scholarships {
+    fill: #ccc;
+}
+
+.tooltip-table td {
+    padding: 0.2em;
+}
+
+.tooltip-title {
+    text-align: right;
+    border-bottom: 1px solid #ccc;
+}
+
+.tooltip-content {
+    border-bottom: 1px solid #ccc;
+}
+
+.d3-tip {
+    color: #fff;
+    padding: 1em;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+}

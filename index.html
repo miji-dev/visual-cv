@@ -4,15 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" src="res/css/styles.css">
+    <link rel="stylesheet" href="res/css/styles.css">
 
     <title>Visual CV</title>
 </head>
 
 <body>
+    <div id="container" class="container">
+        <h1>Visual CV</h1>
+        <div id="cv" class="cv">
+
+        </div>
+    </div>
+
+    <script src="js/libs/d3v3.js"></script>
+    <script src="js/libs/d3-gantt.js"></script>
+    <script src="js/libs/d3-tip.js"></script>
 
     <script src="js/src/vcv.js"></script>
     <script src="js/src/fileloader.js"></script>
+    <script src="js/src/timeline.js"></script>
+    <script src="js/src/cvview.js"></script>
 
     <script>
         (function () {

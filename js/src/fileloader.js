@@ -1,4 +1,7 @@
+/* global VCV */
 VCV.FileLoader = (function () {
+    "use strict";
+
     var that = {},
         FILE_PATH = "test.json";
 
