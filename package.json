@@ -1,14 +1,14 @@
 {
-    "name": "MME-Bucket",
+    "name": "d3cv",
     "version": "0.0.0",
-    "description": "repository tracker for bitbucket",
+    "description": "Visual CV",
     "main": "Gruntfile.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
         "type": "git",
-        "url": "https://bitbucket.org/wiese4/mme-bucket"
+        "url": "https://bitbucket.org/wiese4/visual-cv"
     },
     "author": "Michael Stahl <michael.stahl@wiese4.de>",
     "license": "CC0",

@@ -1,3 +1,7 @@
+body {
+    font-family: "Helvetica", "Segoe UI light", sans-serif;
+}
+
 .container {
     margin: auto;
     margin-top: 20em;
@@ -5,31 +9,20 @@
 }
 
 .cv {
-    height: 300px;
-}
-
-.chart {
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-}
-
-.axis path,
-.axis line {
-    fill: none;
-    stroke: #000;
+    height: 500px;
+    position: relative;
 }
 
 .bar {
-    fill: #33b5e5;
-    border: 1px solid #333;
+    fill: rgba(0, 0, 0, 0.5);
 }
 
 .bar-school {
     fill: rgba(20, 200, 43, 0.5);
 }
 
-.bar-profession {
-    fill: rgba(40, 20, 50, 0.5);
+.bar-work {
+    fill: rgba(89, 23, 125, 0.5);
 }
 
 .bar-honoraries {
@@ -44,22 +37,16 @@
     fill: #ccc;
 }
 
-.tooltip-table td {
-    padding: 0.2em;
-}
-
-.tooltip-title {
-    text-align: right;
-    border-bottom: 1px solid #ccc;
-}
-
-.tooltip-content {
-    border-bottom: 1px solid #ccc;
-}
-
-.d3-tip {
-    color: #fff;
+.tooltip {
+    position: absolute;
+    top: 0;
     padding: 1em;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 10px;
+    left: 0;
+    max-width: 500px;
+    background: #666;
+    color: #fff;
 }
+
+.tooltip-title {}
+
+.tooltip-content {}
