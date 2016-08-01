@@ -9,7 +9,7 @@ module.exports = function (grunt) {
                 separator: ";"
             },
             dist: {
-                src: ["js/*.js"],
+                src: ["cv.js"],
                 dest: "dist/<%= pkg.name %>.js"
             }
         },
