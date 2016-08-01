@@ -10,8 +10,6 @@ d3.cv = function (options) {
         // options with default values
         periodData = options.periodData || [],
         momentData = options.momentData || [],
-        chartHeight = options.chartHeight || 0,
-        chartWidth = options.chartWidth || 0,
         chartMargin = options.chartMargin || {
             top: 20,
             right: 40,
@@ -19,16 +17,18 @@ d3.cv = function (options) {
             left: 20
         },
         chartSelector = options.chartSelector || "body",
-        chartContainer = document.querySelector(chartSelector),
         tickFormat = options.tickFormat || "%Y",
         periodThreshold = options.periodThreshold || 28,
         showTooltips = options.showTooltips || true,
         transitionDuration = options.transitionDuration || 1000,
+        stringToday = options.stringToday || "heute",
         // some other data
+        chartHeight,
+        chartWidth,
+        chartContainer = document.querySelector(chartSelector),
         barHeight,
         circleRadius = 20,
         levels = [],
-        STRING_TODAY = "heute",
         timeDomainStart,
         timeDomainEnd,
         xFunction,
@@ -50,7 +50,7 @@ d3.cv = function (options) {
 
         div.id = "tooltip";
         div.className = "tooltip";
-        div.innerHTML = "<h4 class='tooltip-title'>" + (d.title || "No title") + "</h4><div class='tooltip-content'><p>" + (d.desc || "") + "</p><p>Von " + pad(d.startDate.getDate()) + "." + pad(d.startDate.getMonth() + 1) + "." + d.startDate.getFullYear() + " bis " + (d.ongoing ? STRING_TODAY : (pad(d.endDate.getDate()) + "." + pad(d.endDate.getMonth() + 1) + "." + d.endDate.getFullYear())) + "</p></div>";
+        div.innerHTML = "<h4 class='tooltip-title'>" + (d.title || "No title") + "</h4><div class='tooltip-content'><p>" + (d.desc || "") + "</p><p>Von " + pad(d.startDate.getDate()) + "." + pad(d.startDate.getMonth() + 1) + "." + d.startDate.getFullYear() + " bis " + (d.ongoing ? stringToday : (pad(d.endDate.getDate()) + "." + pad(d.endDate.getMonth() + 1) + "." + d.endDate.getFullYear())) + "</p></div>";
 
         chartContainer.appendChild(div);
     }
