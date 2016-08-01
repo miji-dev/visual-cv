@@ -29,8 +29,10 @@
                 xobj.open("GET", "test2.json", true);
                 xobj.onreadystatechange = function () {
                     if (xobj.readyState == 4 && xobj.status == "200") {
+                        var data = JSON.parse(xobj.responseText);
                         d3.cv({
-                            periodData: JSON.parse(xobj.responseText).periods,
+                            periodData: data.periods,
+                            momentData: data.moments,
                             chartSelector: "#cv"
                         });
                     }

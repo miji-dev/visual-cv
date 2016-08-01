@@ -13,8 +13,49 @@ body {
     position: relative;
 }
 
+.circle {
+    fill: rgba(34, 50, 120, 0.5);
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+}
+
+.pulse {
+    /*fill: red;*/
+    -webkit-animation-name: pulsar;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    animation-name: pulsar;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@-webkit-keyframes pulsar {
+    from {}
+    to {
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+    }
+}
+
+@keyframes pulsar {
+    from {}
+    to {
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+    }
+}
+
 .bar {
     fill: rgba(0, 0, 0, 0.5);
+}
+
+.circle:hover,
+.bar:hover {
+    fill: #ccc;
 }
 
 .bar-school {
@@ -43,8 +84,10 @@ body {
     padding: 1em;
     left: 0;
     max-width: 500px;
-    background: #666;
-    color: #fff;
+    background: #efefef;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 0 #ccc;
+    color: #666;
 }
 
 .tooltip-title {}

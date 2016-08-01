@@ -198,40 +198,42 @@
             "desc": "Universität Regensburg"
     }
     ],
-    "moments": {
-        "awards": [
-            {
-                "date": "2006-08-31T00:00:00.000Z",
-                "type": "Preis der Schule für ausgezeichnete Leistung",
-                "organisation": "Berufsschule II, Bayreuth"
+    "moments": [
+        {
+            "startDate": "2006-08-31T00:00:00.000Z",
+            "type": "award",
+            "title": "Preis der Schule für ausgezeichnete Leistung",
+            "desc": "Berufsschule II, Bayreuth"
       },
-            {
-                "date": "2011-08-31T00:00:00.000Z",
-                "type": "Teilnahme an der Prüfung nach dem Bayerischen Eliteförderungsgesetz",
-                "organisation": "Berufliche Oberschule Bayreuth"
+        {
+            "startDate": "2011-08-31T00:00:00.000Z",
+            "type": "award",
+            "title": "Teilnahme an der Prüfung nach dem Bayerischen Eliteförderungsgesetz",
+            "desc": "Berufliche Oberschule Bayreuth"
       },
-            {
-                "date": "2012-08-31T00:00:00.000Z",
-                "type": "1. Preis beim Programmierwettbewerb im Kurs Algorithmen, Datenstrukturen und Programmierung",
-                "organisation": "Lehrstuhl Informationswissenschaft, Universität Regensburg"
-      }
-    ],
-        "degrees": [
-            {
-                "date": "2003-08-31T00:00:00.000Z",
-                "type": "Mittlere Reife",
-                "gpa": "1.5"
+        {
+            "startDate": "2012-08-31T00:00:00.000Z",
+            "type": "award",
+            "title": "1. Preis beim Programmierwettbewerb im Kurs Algorithmen, Datenstrukturen und Programmierung",
+            "desc": "Lehrstuhl Informationswissenschaft, Universität Regensburg"
       },
-            {
-                "date": "2011-08-31T00:00:00.000Z",
-                "type": "Allgemeine Hochschulreife",
-                "gpa": "1.2"
+        {
+            "startDate": "2003-08-31T00:00:00.000Z",
+            "type": "degree",
+            "title": "Mittlere Reife",
+            "desc": "Notenschnitt: 1.5"
       },
-            {
-                "date": "2014-09-30T00:00:00.000Z",
-                "type": "Bachelor of Arts (Medieninformatik)",
-                "gpa": "1.2"
+        {
+            "startDate": "2011-08-31T00:00:00.000Z",
+            "type": "degree",
+            "title": "Allgemeine Hochschulreife",
+            "desc": "Notenschnitt: 1.2"
+      },
+        {
+            "startDate": "2014-09-30T00:00:00.000Z",
+            "type": "degree",
+            "title": "Bachelor of Arts (Medieninformatik)",
+            "desc": "Notenschnitt: 1.2"
       }
     ]
-    }
 }
