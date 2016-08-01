@@ -28,6 +28,7 @@ d3.cv = function (options) {
         barHeight,
         circleRadius = 20,
         levels = [],
+        STRING_TODAY = "heute",
         timeDomainStart,
         timeDomainEnd,
         xFunction,
@@ -49,7 +50,7 @@ d3.cv = function (options) {
 
         div.id = "tooltip";
         div.className = "tooltip";
-        div.innerHTML = "<h4 class='tooltip-title'>" + (d.title || "No title") + "</h4><div class='tooltip-content'><p>" + (d.desc || "") + "</p><p>Von " + pad(d.startDate.getDate()) + "." + pad(d.startDate.getMonth() + 1) + "." + d.startDate.getFullYear() + " bis " + pad(d.endDate.getDate()) + "." + pad(d.endDate.getMonth() + 1) + "." + d.endDate.getFullYear() + "</p></div>";
+        div.innerHTML = "<h4 class='tooltip-title'>" + (d.title || "No title") + "</h4><div class='tooltip-content'><p>" + (d.desc || "") + "</p><p>Von " + pad(d.startDate.getDate()) + "." + pad(d.startDate.getMonth() + 1) + "." + d.startDate.getFullYear() + " bis " + (d.ongoing ? STRING_TODAY : (pad(d.endDate.getDate()) + "." + pad(d.endDate.getMonth() + 1) + "." + d.endDate.getFullYear())) + "</p></div>";
 
         chartContainer.appendChild(div);
     }
@@ -198,6 +199,10 @@ d3.cv = function (options) {
 
             // if any date isn't set, set it to now
             d.startDate = d.startDate ? new Date(d.startDate) : new Date();
+
+            if (d.endDate === undefined) {
+                d.ongoing = true;
+            }
             d.endDate = d.endDate ? new Date(d.endDate) : new Date();
 
             // is the time difference smaller than the threshold?
@@ -266,12 +271,7 @@ d3.cv = function (options) {
             postMs = postDate.getTime(),
             preMs = prevDate.getTime();
 
-        console.log(postDate, prevDate)
-
-        console.log(postMs, preMs, preMs - threshold, preMs + threshold);
-
         if (postMs >= (preMs - threshold) && postMs <= (preMs + threshold)) {
-            console.log("true")
             return true;
         }
         return false;
