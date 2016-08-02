@@ -4,7 +4,6 @@ body {
 
 .container {
     margin: auto;
-    margin-top: 20em;
     width: 1200px;
 }
 
@@ -22,7 +21,6 @@ body {
 }
 
 .pulse {
-    /*fill: red;*/
     -webkit-animation-name: pulsar;
     -webkit-animation-duration: 1s;
     -webkit-animation-iteration-count: infinite;
