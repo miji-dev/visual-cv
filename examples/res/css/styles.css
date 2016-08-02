@@ -53,38 +53,59 @@ body {
     fill: rgba(0, 0, 0, 0.5);
 }
 
+.legend rect {
+    stroke: #ccc;
+}
+
+.legend text {
+    fill: #666;
+}
+
 .circle:hover,
 .bar:hover {
     fill: #ccc;
 }
 
-.bar-school {
-    fill: rgba(20, 200, 43, 0.5);
+.school {
+    fill: rgba(136, 112, 255, 0.5);
+    background: rgba(136, 112, 255, 0.5);
 }
 
-.bar-work {
-    fill: rgba(89, 23, 125, 0.5);
+.work {
+    fill: rgba(252, 96, 66, 0.5);
 }
 
-.bar-honoraries {
-    fill: rgba(100, 50, 200, 0.5);
+.honoraries {
+    fill: rgba(151, 206, 6, 0.5);
 }
 
-.bar-studies {
-    fill: rgba(89, 98, 2, 0.5);
+.studies {
+    fill: rgba(253, 208, 159, 0.5);
 }
 
-.bar-scholarships {
-    fill: #ccc;
+.scholarships {
+    fill: rgba(66, 114, 155, 0.5);
+}
+
+.circle {
+    fill: rgba(146, 242, 42, 0.5);
+}
+
+.award {
+    fill: rgba(99, 57, 62, 0.5);
+}
+
+.degree {
+    fill: rgba(61, 142, 185, 0.5);
 }
 
 .tooltip {
     position: absolute;
-    top: 0;
-    padding: 1em;
+    top: 50px;
+    padding: 0 1em;
     left: 0;
     max-width: 500px;
-    background: #efefef;
+    background: #fafafa;
     border-radius: 5px;
     box-shadow: 1px 1px 1px 0 #ccc;
     color: #666;

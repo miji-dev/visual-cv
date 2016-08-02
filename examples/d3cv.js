@@ -10,8 +10,6 @@ d3.cv = function (options) {
         // options with default values
         periodData = options.periodData || [],
         momentData = options.momentData || [],
-        chartHeight = options.chartHeight || 0,
-        chartWidth = options.chartWidth || 0,
         chartMargin = options.chartMargin || {
             top: 20,
             right: 40,
@@ -19,22 +17,25 @@ d3.cv = function (options) {
             left: 20
         },
         chartSelector = options.chartSelector || "body",
-        chartContainer = document.querySelector(chartSelector),
         tickFormat = options.tickFormat || "%Y",
         periodThreshold = options.periodThreshold || 28,
         showTooltips = options.showTooltips || true,
         transitionDuration = options.transitionDuration || 1000,
+        stringToday = options.stringToday || "heute",
+        circleRadius = options.circleRadius || 20,
+        showLegend = options.showLegend || true,
         // some other data
-        barHeight,
-        circleRadius = 20,
+        legendData = [],
         levels = [],
-        STRING_TODAY = "heute",
+        chartHeight,
+        chartWidth,
+        chartContainer = document.querySelector(chartSelector),
+        barHeight,
         timeDomainStart,
         timeDomainEnd,
         xFunction,
         yFunction,
-        xAxis,
-        yAxis; // Do we need a yAxis?
+        xAxis;
 
     function calcChartSize() {
         if (!chartContainer) {
@@ -50,7 +51,7 @@ d3.cv = function (options) {
 
         div.id = "tooltip";
         div.className = "tooltip";
-        div.innerHTML = "<h4 class='tooltip-title'>" + (d.title || "No title") + "</h4><div class='tooltip-content'><p>" + (d.desc || "") + "</p><p>Von " + pad(d.startDate.getDate()) + "." + pad(d.startDate.getMonth() + 1) + "." + d.startDate.getFullYear() + " bis " + (d.ongoing ? STRING_TODAY : (pad(d.endDate.getDate()) + "." + pad(d.endDate.getMonth() + 1) + "." + d.endDate.getFullYear())) + "</p></div>";
+        div.innerHTML = "<h4 class='tooltip-title'>" + (d.title || "No title") + "</h4><div class='tooltip-content'><p>" + (d.desc || "") + "</p><p>Von " + pad(d.startDate.getDate()) + "." + pad(d.startDate.getMonth() + 1) + "." + d.startDate.getFullYear() + " bis " + (d.ongoing ? stringToday : (pad(d.endDate.getDate()) + "." + pad(d.endDate.getMonth() + 1) + "." + d.endDate.getFullYear())) + "</p></div>";
 
         chartContainer.appendChild(div);
     }
@@ -60,19 +61,32 @@ d3.cv = function (options) {
     }
 
     function draw() {
-        var svg, bar, circles;
+        var chart, svg;
 
-        svg = d3.select(chartSelector)
+        chart = d3.select(chartSelector)
             .append("svg")
             .attr("class", "chart")
             .attr("width", chartWidth)
-            .attr("height", chartHeight)
-            .append("g")
+            .attr("height", chartHeight);
+
+        svg = chart.append("g")
             .attr("class", "d3-cv")
             .attr("width", chartWidth)
             .attr("height", chartHeight);
 
-        bar = svg.selectAll(".chart")
+        drawRects(svg);
+        drawCircles(svg);
+
+
+        drawAxis(chart);
+
+        if (showLegend) {
+            drawLegend(chart);
+        }
+    }
+
+    function drawRects(svg) {
+        var bar = svg.selectAll(".chart")
             .data(periodData)
             .enter()
             .append("g");
@@ -87,7 +101,13 @@ d3.cv = function (options) {
             .duration(transitionDuration)
             .attr("width", calcBarWidth);
 
-        circles = svg.selectAll(".chart")
+        if (showTooltips) {
+            bar.on("mouseenter", showTooltip).on("mouseleave", hideTooltip);
+        }
+    }
+
+    function drawCircles(svg) {
+        var circles = svg.selectAll(".chart")
             .data(momentData)
             .enter()
             .append("g");
@@ -99,16 +119,61 @@ d3.cv = function (options) {
             .attr("class", setCircleClass);
 
         if (showTooltips) {
-            bar.on("mouseenter", showTooltip).on("mouseleave", hideTooltip);
             circles.on("mouseenter", showTooltip).on("mouseleave", hideTooltip);
         }
+    }
 
-        svg.append("g")
+    function drawAxis(chart) {
+        chart.append("g")
             .attr("class", "x axis")
             .attr("transform", "translate(0, " + (chartHeight - chartMargin.top - chartMargin.bottom) + ")")
             .transition()
             .duration(transitionDuration)
             .call(xAxis);
+    }
+
+    function drawLegend(chart) {
+        var legend, row = 0,
+            col = 0;
+
+        legend = chart.selectAll(".legend")
+            .data(legendData)
+            .enter()
+            .append("g")
+            .attr("class", "legend")
+            .attr("transform", function (d) {
+                var y = row * 25,
+                    x = col;
+
+                col += d.length * 6 + 50; // magic numbers, try and error
+
+                if (col > chartWidth) {
+                    x = 0;
+                    col = d.length * 6 + 50; // magic numbers, try and error
+                    row++;
+                    y = row * 25;
+                }
+                return "translate(" + x + "," + y + ")";
+            });
+
+        legend.append("rect")
+            .attr("x", 0)
+            .attr("class", function (d) {
+                return d;
+            })
+            .attr("width", 18)
+            .attr("height", 18);
+
+        legend.append("text")
+            .attr("x", 20)
+            .attr("y", 9)
+            .attr("dy", ".35em")
+            .style("text-anchor", "start")
+            .style("font-family", "monospace")
+            .text(function (d) {
+                return d;
+            });
+
     }
 
     function pad(n) {
@@ -133,33 +198,41 @@ d3.cv = function (options) {
     }
 
     function setRectClass(d) {
-        return "bar " + (d.type ? "bar-" + d.type : "");
+        return "bar " + (d.type ? d.type : "");
     }
 
     function setCircleClass(d) {
-        return "circle pulse " + (d.type ? "circle-" + d.type : "");
+        return "circle pulse " + (d.type ? d.type : "");
     }
 
     function initTimeDomain() {
-        if (periodData === undefined || periodData.length < 1) {
+        // if no data at all is given, set some default data, even though it doesn't make sense really, since there is nothing to show
+        if ((periodData === undefined || periodData.length < 1) && (momentData === undefined || momentData.length < 1)) {
             timeDomainStart = d3.timeDay.offset(new Date(), -3);
             timeDomainEnd = d3.timeHour.offset(new Date(), +3);
         } else {
+
+            // sort both arrays descending by endDate
             periodData.sort(function (a, b) {
-                return a.endDate - b.endDate;
+                return b.endDate - a.endDate;
+            });
+            momentData.sort(function (a, b) {
+                return b.endDate - a.endDate;
             });
 
-            timeDomainEnd = periodData[periodData.length - 1].endDate;
+            // choose the latest endDate as timeDomainEnd
+            timeDomainEnd = periodData[0].endDate >= momentData[0].endDate ? periodData[0].endDate : momentData[0].endDate;
 
+            // sort both arrays ascending by startDate
             periodData.sort(function (a, b) {
                 return a.startDate - b.startDate;
             });
-
-            periodData.forEach(function (d, ind) {
-                d.id = ind;
+            momentData.sort(function (a, b) {
+                return a.startDate - b.startDate;
             });
 
-            timeDomainStart = periodData[0].startDate;
+            // choose the earliest startDate as timeDomainStart
+            timeDomainStart = periodData[0].startDate <= momentData[0].startDate ? periodData[0].startDate : momentData[0].startDate;
         }
     }
 
@@ -178,49 +251,60 @@ d3.cv = function (options) {
             .domain(levels)
             .rangeRound([0, chartHeight - chartMargin.top - chartMargin.bottom], 0);
 
-        yAxis = d3.axisLeft(yFunction).tickSize(0);
+        d3.axisLeft(yFunction).tickSize(0);
 
         barHeight = Math.floor((chartHeight - chartMargin.bottom - chartMargin.top) / (levels.length + 1)) - 2;
     }
 
     function preProcessData() {
-        var tempPeriodData = [];
+        var tempPeriodData = [],
+            tempMomentData = [];
 
         // iterate through momentData
         momentData.forEach(function (d) {
-
             // if any date isn't set, set it to now or the startDate respectively
             d.startDate = d.startDate ? new Date(d.startDate) : new Date();
             d.endDate = d.endDate ? new Date(d.endDate) : d.startDate;
+            // is the time difference smaller than the threshold?
+            if (Math.ceil((d.endDate.getTime() - d.startDate.getTime()) / (1000 * 3600 * 24)) < periodThreshold) {
+                // if so it's a moment.
+                tempMomentData.push(d);
+            } else {
+                // if not, it's a period
+                tempPeriodData.push(d);
+            }
+
+            // add type to legendArray if not exists
+            if (legendData.indexOf(d.type) < 0) {
+                legendData.push(d.type);
+            }
         });
 
         // iterate through periodData
         periodData.forEach(function (d) {
-
             // if any date isn't set, set it to now
             d.startDate = d.startDate ? new Date(d.startDate) : new Date();
-
+            // if there is no endDate, it's an ongoing event
             if (d.endDate === undefined) {
                 d.ongoing = true;
             }
             d.endDate = d.endDate ? new Date(d.endDate) : new Date();
-
             // is the time difference smaller than the threshold?
             if (Math.ceil((d.endDate.getTime() - d.startDate.getTime()) / (1000 * 3600 * 24)) < periodThreshold) {
-
                 // if so, it's not a period, it's a moment, sorry.
-                momentData.push(d);
+                tempMomentData.push(d);
             } else {
-
                 // if not, it can stay a period
                 tempPeriodData.push(d);
             }
+
+            // add type to legendArray if not exists
+            if (legendData.indexOf(d.type) < 0) {
+                legendData.push(d.type);
+            }
         });
 
-        momentData.sort(function (a, b) {
-            return a.startDate - b.startDate;
-        });
-
+        momentData = tempMomentData;
         periodData = tempPeriodData;
     }
 
@@ -267,7 +351,7 @@ d3.cv = function (options) {
     }
 
     function isInDateRange(postDate, prevDate) {
-        var threshold = 2629746000,
+        var threshold = 2629746000, // magic number -> 1 month in milliseconds
             postMs = postDate.getTime(),
             preMs = prevDate.getTime();
 
