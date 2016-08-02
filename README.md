@@ -1,6 +1,6 @@
 ## Introduction
 Simple CV (= Curriculum Vitae) Visualisation Timeline Plugin based on D3.js
-![alt tag](https://raw.githubusercontent.com/wiese4/visual-cv/master/examples/res/img/visualcv.png)
+![alt tag](https://raw.githubusercontent.com/wiese4/visual-cv/master/examples/res/img/visual-cv.png)
 
 ## Installation
 Coming soon
@@ -47,13 +47,13 @@ For momentary data only the startDate is mandatory since it mostly occured on a 
 ### Initialization
 ```javascript
 d3.cv({
-  periodData: periodData, // mandatory
-  momentData: momentData, // optional
+  periodData: periodData, // mandatory if no momentData is passed
+  momentData: momentData, // mandatory if no periodData is passed
   chartSelector: "#cv" // optional
   // some more options as described below
 });
 ```
-A minimal initialization consists of passing an options parameter with the periodData. You can also pass some momentData and a chartSelector. Some other options and default values are described below.
+A minimal initialization consists of passing an options parameter with periodData and/or momentData. Some other options and default values are described below.
 ### Options
 You can set some options to individualize your cv if you are not satisfied with the default values. Some more options will come in future releases.
 ```javascript
@@ -72,41 +72,73 @@ d3.cv({
   periodThreshold = 28, // in days. If a period event is shorter in time than the threshold, it's treated as a moment event
   showTooltips = true, // set if tooltips with title, description and duration of the events are shown on mouseover. Can be styled via CSS.
   transitionDuration = 1000, // duration in ms for the animations
-  stringToday = "heute" // will be shown as string for endDate if it's an ongoing process. Default is german since it's my mother tongue ;-)
+  stringToday = "heute", // will be shown as string for endDate if it's an ongoing process. Default is german since it's my mother tongue ;-)
+  circleRadius = options.circleRadius || 20,
+  showLegend = options.showLegend || true; // the legend will be shown in the upper left corner of the chart, using the type properties as names. Styling the bars and circles via CSS will be required as described below
 });
 ```
 ### Styling
 #### Chart Data
-The `type` property of your data is used to add CSS classes. PeriodData is rendered as rectangles, momentData as fancy pulsing circles. So if you have some periodData with types "school" and "work" and momentData with types "degree" and "award" you can do this:
+The `type` property of your data is used to add CSS classes. PeriodData is rendered as rectangles, momentData as circles. So if you have some periodData with types "school" and "work" and momentData with types "degree" and "award" you can do this:
 ```css
-.bar-school {
-  fill: red;
+.bar {
+  fill: red; /* default for all bars */
 }
 
-.bar-work {
+.circle {
+  fill: yellow; /* default for all circles */
+}
+
+.school {
+  fill: orange;
+}
+
+.work {
   fill: blue;
 }
 
-.circle-degree {
+.degree {
   fill: black;
 }
 
-.circle-award {
+.award {
   fill: green;
 }
 ```
 Be aware that we have to handle svg so we must use e.g. `fill: red;` to set the background color.
-#### Tooltips
-You can style the tooltips, too. At least if you use them.
+To add some fancy pulsing effect for the circles, just add the following code or customize it beforehand.
 ```css
-/* example styling for tooltips. They will appear in the upper left corner of your chart */
+.circle {
+  transform: scale(0.8);
+  transform-origin: 50% 50%;
+}
+
+.pulse {
+  animation-name: pulsar;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes pulsar {
+    from {}
+    to {
+        transform: scale(1, 1);
+    }
+}
+```
+#### Tooltips
+You can style the tooltips if you want to use them.
+```css
+/* example styling for tooltips. They will appear in the upper left corner of your chart
+  but not a little below the top because the legend will be on top by default */
 .tooltip {
   position: absolute;
-  top: 0;
-  padding: 1em;
+  top: 50px;
+  padding: 0 1em;
   left: 0;
   max-width: 500px;
-  background: #efefef;
+  background: #fafafa;
   border-radius: 5px;
   box-shadow: 1px 1px 1px 0 #ccc;
   color: #666;
